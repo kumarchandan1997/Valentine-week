@@ -3,6 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFW6Y4YSM4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFW6Y4YSM4', {
+    debug_mode: true
+  });
+</script>
+
+
 <title>Rose Day ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -374,57 +387,36 @@ nav ul li {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-function showLove() {
-  alert("🌹 Happy Rose Day, my love! 🌹");
-}
-
+/* 🌹 Floating Roses Animation */
 setInterval(() => {
   const rose = document.createElement("div");
   rose.className = "rose";
   rose.innerHTML = "🌹";
-  rose.style.left = Math.random()*100 + "vw";
-  rose.style.animationDuration = (4+Math.random()*4)+"s";
+  rose.style.left = Math.random() * 100 + "vw";
+  rose.style.animationDuration = (4 + Math.random() * 4) + "s";
   document.body.appendChild(rose);
-  setTimeout(()=>rose.remove(),8000);
+  setTimeout(() => rose.remove(), 8000);
 }, 500);
-</script>
 
-<script>
+/* 💖 Love Button Click */
 function showLove() {
-  Swal.fire({
-    title: 'Happy Rose Day 🌹',
-    html: `
-      <p>
-        Rose is just a flower 🌹<br>
-        but <strong>you are my real flower</strong> ❤️<br><br>
 
-        My love for you grows<br>
-        more beautiful every day 💕
-      </p>
+  /* 🔥 Google Analytics Event */
+  if (typeof gtag === "function") {
+    gtag('event', 'love_button_click', {
+      event_category: 'Rose Day',
+      event_label: 'Click for Love Button'
+    });
+  }
 
-      <p style="margin-top:15px; font-style:italic;">
-        "आज रोज़ डे है जान,<br>
-        और मेरा सबसे खूबसूरत फूल सिर्फ तू है 🌹"
-      </p>
-    `,
-    imageUrl: 'https://em-content.zobj.net/thumbs/240/apple/354/rose_1f339.png',
-    imageWidth: 120,
-    showConfirmButton: true,
-    confirmButtonText: 'Love You 💖',
-    allowOutsideClick: false,
-    showClass: {
-      popup: 'animate__animated animate__fadeInUp'
-    }
-  });
-}
-</script>
-
-<script>
-function showLove() {
+  /* 🎵 Play Music */
   const music = document.getElementById("loveMusic");
-  music.volume = 0.6;   // soft sound
-  music.play();
+  if (music) {
+    music.volume = 0.6;
+    music.play();
+  }
 
+  /* 🌹 SweetAlert Popup */
   Swal.fire({
     title: 'Happy Rose Day 🌹',
     html: `
@@ -447,11 +439,14 @@ function showLove() {
     background: 'linear-gradient(135deg, #ffdde1, #ee9ca7)',
     allowOutsideClick: false,
     willClose: () => {
-      music.pause();       // stop music when popup closes
+      if (music) music.pause();
     }
   });
 }
 </script>
+
+
+
 
 
 
