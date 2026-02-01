@@ -55,9 +55,26 @@ nav ul {
   list-style: none;
 }
 
-nav ul li {
-  color: white;
-  font-weight: 600;
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  position:relative;
+}
+
+nav ul li a::after{
+  content:'';
+  position:absolute;
+  width:0;
+  height:2px;
+  left:0;
+  bottom:-5px;
+  background:white;
+  transition:0.3s;
+}
+
+nav ul li a:hover::after{
+  width:100%;
 }
 
 /* Hero */
@@ -264,9 +281,11 @@ nav ul li {
 
 <nav>
   <ul>
-    <li>🌹 Rose Day</li>
+    <li><a href="rose-day.html">🌹 Rose Day</a></li>
+    <li><a href="propose-day.html">💍 Propose Day</a></li>
   </ul>
 </nav>
+
 
 <section class="hero">
   <div class="hero-content">
