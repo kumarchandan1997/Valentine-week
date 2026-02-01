@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rose Day ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #ff4d6d;
+  --dark: #8b1d3f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  overflow-x: hidden;
+  padding-top: 60px;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 77, 109, 0.95);
+  padding: 12px;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav ul li {
+  color: white;
+  font-weight: 600;
+}
+
+/* Hero */
+.hero {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 20px;
+  animation: fadeIn 1.5s ease;
+}
+
+.hero h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: var(--dark);
+}
+
+.hero p {
+  margin-top: 10px;
+  color: #4a0f23;
+}
+
+.rose-img img {
+  width: 220px;
+  margin-top: 20px;
+  animation: float 4s infinite;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: var(--primary);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* 🌹 Rose Message */
+.love-message {
+  text-align: center;
+  padding: 50px 20px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(6px);
+  animation: fadeUp 1.2s ease;
+}
+
+.love-message h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.4rem;
+  color: var(--dark);
+}
+
+.love-message p {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #5a0d25;
+  line-height: 1.7;
+}
+
+.mini-roses {
+  margin-top: 15px;
+  font-size: 1.6rem;
+  animation: float 3s infinite;
+}
+
+/* Cards */
+.cards {
+  padding: 50px 20px 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.card p {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #5a0d25;
+}
+
+/* Floating Roses */
+.rose {
+  position: fixed;
+  bottom: -40px;
+  font-size: 22px;
+  animation: rise linear infinite;
+  opacity: 0.7;
+}
+
+/* 🌹 Footer */
+.footer {
+  text-align: center;
+  padding: 40px 20px 30px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  color: #5a0d25;
+}
+
+.footer p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-love {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.footer-roses {
+  margin-top: 15px;
+  font-size: 1.4rem;
+  animation: float 3s infinite;
+}
+
+/* 🌹 Custom SweetAlert */
+.swal2-popup {
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7) !important;
+  border-radius: 25px !important;
+  padding: 35px 25px !important;
+}
+
+.swal2-title {
+  font-family: 'Great Vibes', cursive !important;
+  font-size: 2.4rem !important;
+  color: #8b1d3f !important;
+}
+
+.swal2-html-container {
+  font-size: 1rem !important;
+  color: #5a0d25 !important;
+  line-height: 1.6;
+}
+
+.swal2-confirm {
+  background: #ff4d6d !important;
+  border-radius: 30px !important;
+  padding: 10px 30px !important;
+  font-size: 1rem !important;
+}
+
+.swal2-image {
+  margin: 0 auto 15px;
+  animation: float 3s infinite;
+}
+
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(30px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(40px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+@keyframes float {
+  0%,100% {transform:translateY(0);}
+  50% {transform:translateY(-15px);}
+}
+
+@keyframes rise {
+  to {transform:translateY(-110vh);}
+}
+
+/* Mobile */
+@media (max-width:600px) {
+  .hero h1 { font-size: 2.3rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li>🌹 Rose Day</li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Happy Rose Day ❤️</h1>
+    <p>A rose for every smile of yours 🌹</p>
+    <div class="rose-img">
+      <img src="https://blacktulipflowers.in/wp-content/uploads/2022/11/10-Red-Roses-Bouquet-1.png">
+    </div>
+    <button class="btn" onclick="showLove()">Click for Love 💖</button>
+  </div>
+</section>
+
+<section class="love-message">
+  <h2>Today is Rose Day 🌹</h2>
+
+  <p>
+    Rose is just a flower… 🌹<br>
+    but I have something more beautiful than any rose ❤️<br><br>
+
+    This is you, baby.<br>
+    My real flower, my happiness, my forever 💕<br><br>
+
+    Every rose reminds me of your smile,<br>
+    every petal carries my love for you 💖<br><br>
+
+    Can you see my real flower?<br>
+    Please go down… 🌹👇
+  </p>
+
+  <p style="margin-top:20px; font-style: italic;">
+    "फूलों से भी खूबसूरत है तेरा चेहरा,<br>
+    गुलाब क्या दे तुझे, जब तू खुद गुलाब से भी प्यारी है ❤️"
+  </p>
+
+  <p style="margin-top:15px; font-style: italic;">
+    "आज रोज़ डे है जान,<br>
+    और मेरा सबसे खूबसूरत फूल सिर्फ तू है 🌹"
+  </p>
+
+  <div class="mini-roses">
+    🌹 🌹 🌹 🌹 🌹
+  </div>
+</section>
+
+
+<section class="cards">
+  <div class="card">
+  <img src="images/image2.jpeg">
+  <p>
+    You are my favorite feeling 💕<br>
+    the calm in my chaos, the smile in my heart ❤️<br><br>
+
+    <span style="font-style: italic;">
+      "मेरी हर खुशी की वजह सिर्फ तुम हो,<br>
+      और मेरी हर दुआ का नाम भी तुम हो 🌹"
+    </span>
+  </p>
+</div>
+
+
+  <div class="card">
+  <img src="images/image4.jpeg">
+  <p>
+    Every rose reminds me of you 🌹<br>
+    because beauty feels incomplete without your smile ❤️<br><br>
+
+    <span style="font-style: italic;">
+      "हर गुलाब में तेरा ही अक्स नज़र आता है,<br>
+      शायद मेरी मोहब्बत अब फूलों में भी बस गई है 💕"
+    </span>
+  </p>
+</div>
+
+
+  <div class="card">
+  <img src="images/image5.jpeg">
+  <p>
+    My heart chose you forever ❤️<br>
+    not for today, but for every tomorrow 💖<br><br>
+
+    <span style="font-style: italic;">
+      "दिल ने जब भी फैसला किया है जान,<br>
+      हर बार सिर्फ तुझे ही चुना है 🌹"
+    </span>
+  </p>
+</div>
+
+
+  <div class="card">
+  <img src="images/image6.jpeg">
+  <p>
+    You make my world beautiful 🌍<br>
+    just by being in it, my love 💕<br><br>
+
+    <span style="font-style: italic;">
+      "तू साथ हो तो हर रास्ता आसान लगता है,<br>
+      वरना ये दुनिया भी सूनी सी लगती है ❤️"
+    </span>
+  </p>
+</div>
+
+
+  <div class="card">
+  <img src="images/image7.jpeg">
+  <p>
+    Love looks perfect on you 😍<br>
+    like it was made only for you 💖<br><br>
+
+    <span style="font-style: italic;">
+      "इश्क़ जचता है तुझ पर इस कदर,<br>
+      जैसे गुलाब पर खुशबू 🌹"
+    </span>
+  </p>
+</div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function showLove() {
+  alert("🌹 Happy Rose Day, my love! 🌹");
+}
+
+setInterval(() => {
+  const rose = document.createElement("div");
+  rose.className = "rose";
+  rose.innerHTML = "🌹";
+  rose.style.left = Math.random()*100 + "vw";
+  rose.style.animationDuration = (4+Math.random()*4)+"s";
+  document.body.appendChild(rose);
+  setTimeout(()=>rose.remove(),8000);
+}, 500);
+</script>
+
+<script>
+function showLove() {
+  Swal.fire({
+    title: 'Happy Rose Day 🌹',
+    html: `
+      <p>
+        Rose is just a flower 🌹<br>
+        but <strong>you are my real flower</strong> ❤️<br><br>
+
+        My love for you grows<br>
+        more beautiful every day 💕
+      </p>
+
+      <p style="margin-top:15px; font-style:italic;">
+        "आज रोज़ डे है जान,<br>
+        और मेरा सबसे खूबसूरत फूल सिर्फ तू है 🌹"
+      </p>
+    `,
+    imageUrl: 'https://em-content.zobj.net/thumbs/240/apple/354/rose_1f339.png',
+    imageWidth: 120,
+    showConfirmButton: true,
+    confirmButtonText: 'Love You 💖',
+    allowOutsideClick: false,
+    showClass: {
+      popup: 'animate__animated animate__fadeInUp'
+    }
+  });
+}
+</script>
+
+<script>
+function showLove() {
+  const music = document.getElementById("loveMusic");
+  music.volume = 0.6;   // soft sound
+  music.play();
+
+  Swal.fire({
+    title: 'Happy Rose Day 🌹',
+    html: `
+      <p>
+        Rose is just a flower 🌹<br>
+        but <strong>you are my real flower</strong> ❤️<br><br>
+        My love for you grows<br>
+        more beautiful every day 💕
+      </p>
+
+      <p style="margin-top:15px; font-style:italic;">
+        "आज रोज़ डे है जान,<br>
+        और मेरा सबसे खूबसूरत फूल सिर्फ तू है 🌹"
+      </p>
+    `,
+    imageUrl: 'https://em-content.zobj.net/thumbs/240/apple/354/rose_1f339.png',
+    imageWidth: 120,
+    confirmButtonText: 'Love You 💖',
+    confirmButtonColor: '#ff4d6d',
+    background: 'linear-gradient(135deg, #ffdde1, #ee9ca7)',
+    allowOutsideClick: false,
+    willClose: () => {
+      music.pause();       // stop music when popup closes
+    }
+  });
+}
+</script>
+
+
+
+<audio id="loveMusic">
+  <source src="music/musicrose.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+<!-- 🌹 Footer -->
+<footer class="footer">
+  <p>
+    Made with ❤️ just for you<br>
+    On this Rose Day 🌹 and every day
+  </p>
+
+  <p class="footer-love">
+    You are my today, my tomorrow, my forever 💕
+  </p>
+
+  <div class="footer-roses">
+    🌹 🌹 🌹
+  </div>
+</footer>
+
+</html>
