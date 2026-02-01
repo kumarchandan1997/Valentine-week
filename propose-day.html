@@ -38,26 +38,98 @@ body{
   color:var(--dark);
 }
 
-/* Navbar */
-nav{
+/* NAVBAR */
+.navbar{
   position:fixed;
   top:0;
   width:100%;
-  background:rgba(181,23,158,.95);
-  padding:12px;
+  background:linear-gradient(135deg,#b5179e,#7209b7);
   z-index:1000;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
-nav ul{
+.nav-wrapper{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-weight:700;
+  color:#ffd6ff;
+  font-size:1.1rem;
+  letter-spacing:.5px;
+}
+
+.nav-links{
   list-style:none;
   display:flex;
-  justify-content:center;
+  gap:22px;
 }
 
-nav ul li{
-  color:#fff;
+.nav-links li a{
+  color:white;
+  text-decoration:none;
   font-weight:600;
+  font-size:.95rem;
+  position:relative;
+  padding:6px 0;
 }
+
+/* underline animation */
+.nav-links li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0;
+  height:2px;
+  background:#ffd6ff;
+  transition:.3s ease;
+}
+
+.nav-links li a:hover::after{
+  width:100%;
+}
+
+/* mobile menu button */
+.menu-btn{
+  display:none;
+  font-size:26px;
+  color:white;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#7209b7,#560bad);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:18px 0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links li{
+    margin:10px 0;
+  }
+}
+
 
 /* Hero */
 .hero{
@@ -243,11 +315,19 @@ footer{
 
 <body>
 
-<nav>
-  <ul>
-    <li>💍 Propose Day</li>
-  </ul>
+<nav class="navbar">
+  <div class="nav-wrapper">
+    <div class="logo">❤️ Valentine</div>
+
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+    </ul>
+  </div>
 </nav>
+
 
 <section class="hero">
   <div class="hero-content">
@@ -406,6 +486,13 @@ function propose(){
   });
 }
 </script>
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
 
 </body>
 </html>
