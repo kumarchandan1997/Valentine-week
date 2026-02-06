@@ -40,28 +40,103 @@ body{
   padding-top:60px;
 }
 
-/* Navbar */
-nav{
+/* 🤗 HUG DAY NAVBAR */
+.hug-nav{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
-  background:rgba(77,182,172,.95);
-  padding:12px;
+  height:60px;
+  background:linear-gradient(135deg,#4db6ac,#80cbc4);
   z-index:1000;
+  box-shadow:0 8px 25px rgba(77,182,172,.4);
 }
 
-nav ul{
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  height:100%;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.nav-logo{
+  font-weight:700;
+  color:white;
+  font-size:1.05rem;
+  letter-spacing:.5px;
+}
+
+/* LINKS */
+.nav-links{
   list-style:none;
   display:flex;
-  justify-content:center;
-  gap:30px;
+  gap:28px;
 }
 
-nav ul li a{
+.nav-links li a{
   color:white;
   text-decoration:none;
   font-weight:600;
+  font-size:.95rem;
+  position:relative;
+  padding:6px 0;
 }
+
+/* underline animation */
+.nav-links li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:white;
+  transition:.3s ease;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after{
+  width:100%;
+}
+
+/* MOBILE MENU BUTTON */
+.menu-btn{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* 📱 MOBILE VIEW */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#80cbc4,#4db6ac);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:20px 0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links li{
+    margin:12px 0;
+  }
+}
+
 
 /* Hero */
 .hero{
@@ -221,15 +296,23 @@ footer{
 
 <body>
 
-<nav>
-  <ul>
-    <li><a href="rose-day.html">🌹 Rose Day</a></li>
-    <li><a href="propose-day.html">💍 Propose Day</a></li>
-    <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
-    <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
-    <li><a href="hug-day.html">🤗 Hug Day</a></li>
-  </ul>
+<nav class="hug-nav">
+  <div class="nav-container">
+    <div class="nav-logo">🤗 Hug Day</div>
+
+    <!-- Mobile menu button -->
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+      <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
+      <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
+      <li><a href="hug-day.html" class="active">🤗 Hug Day</a></li>
+    </ul>
+  </div>
 </nav>
+
 
 <section class="hero">
   <div class="hero-box">
@@ -375,6 +458,13 @@ function hugLove(){
   });
 }
 </script>
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
 
 </body>
 </html>

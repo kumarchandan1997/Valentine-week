@@ -40,28 +40,101 @@ body{
   padding-top:60px;
 }
 
-/* Navbar */
-nav{
+/* 💖 NAVBAR */
+.val-nav{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
-  background:rgba(230,57,70,.95);
-  padding:12px;
+  height:60px;
+  background:linear-gradient(135deg,#e63946,#ff758f);
   z-index:1000;
+  box-shadow:0 6px 25px rgba(230,57,70,.45);
 }
 
-nav ul{
+.nav-wrap{
+  max-width:1200px;
+  margin:auto;
+  height:100%;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.nav-logo{
+  color:white;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+/* LINKS */
+.nav-links{
   list-style:none;
   display:flex;
-  justify-content:center;
-  gap:30px;
+  gap:26px;
 }
 
-nav ul li a{
+.nav-links li a{
   color:white;
   text-decoration:none;
   font-weight:600;
+  font-size:.95rem;
+  position:relative;
+  padding:6px 4px;
 }
+
+/* 💖 HEART UNDERLINE */
+.nav-links li a::after{
+  content:'💖';
+  position:absolute;
+  left:50%;
+  bottom:-18px;
+  transform:translateX(-50%) scale(0);
+  font-size:14px;
+  transition:.35s ease;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after{
+  transform:translateX(-50%) scale(1);
+}
+
+/* ☰ HAMBURGER */
+.menu-btn{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* 📱 MOBILE */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#ff758f,#e63946);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:20px 0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links li{
+    margin:12px 0;
+  }
+}
+
 
 /* Hero */
 .hero{
@@ -230,16 +303,25 @@ footer{
 
 <body>
 
-<nav>
-  <ul>
-    <li><a href="rose-day.html">🌹 Rose Day</a></li>
-    <li><a href="propose-day.html">💍 Propose Day</a></li>
-    <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
-    <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
-    <li><a href="hug-day.html">🤗 Hug Day</a></li>
-    <li><a href="kiss-day.html">💋 Kiss Day</a></li>
-  </ul>
+<nav class="val-nav">
+  <div class="nav-wrap">
+    <div class="nav-logo">💖 Valentine Days</div>
+
+    <!-- Hamburger -->
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+      <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
+      <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
+      <li><a href="promise-day.html">🤝 Promise Day</a></li>
+      <li><a href="hug-day.html">🤗 Hug Day</a></li>
+      <li><a href="kiss-day.html" class="active">💋 Kiss Day</a></li>
+    </ul>
+  </div>
 </nav>
+
 
 <section class="hero">
   <div class="hero-box">
@@ -383,6 +465,13 @@ function kissLove(){
   });
 }
 </script>
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
 
 </body>
 </html>
