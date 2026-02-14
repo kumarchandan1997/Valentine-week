@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFW6Y4YSM4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFW6Y4YSM4');
+</script>
+
+<title>Propose Day 💍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#b5179e;
+  --secondary:#7209b7;
+  --dark:#240046;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#fbc2eb,#a18cd1);
+  overflow-x:hidden;
+  padding-top:60px;
+  color:var(--dark);
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:linear-gradient(135deg,#b5179e,#7209b7);
+  z-index:1000;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.nav-wrapper{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-weight:700;
+  color:#ffd6ff;
+  font-size:1.1rem;
+  letter-spacing:.5px;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:22px;
+}
+
+.nav-links li a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.95rem;
+  position:relative;
+  padding:6px 0;
+}
+
+/* underline animation */
+.nav-links li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0;
+  height:2px;
+  background:#ffd6ff;
+  transition:.3s ease;
+}
+
+.nav-links li a:hover::after{
+  width:100%;
+}
+
+/* mobile menu button */
+.menu-btn{
+  display:none;
+  font-size:26px;
+  color:white;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#7209b7,#560bad);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:18px 0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links li{
+    margin:10px 0;
+  }
+}
+
+
+/* Hero */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero-content{
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(10px);
+  padding:40px;
+  border-radius:30px;
+  animation:fadeIn 1.5s ease;
+}
+
+.hero h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3.5rem;
+}
+
+.hero p{
+  margin-top:10px;
+  font-size:1.05rem;
+}
+
+.ring-big{
+  font-size:110px;
+  margin:25px 0;
+  animation:pulse 2s infinite;
+}
+
+.btn{
+  margin-top:20px;
+  padding:14px 42px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  border:none;
+  border-radius:40px;
+  color:#fff;
+  font-size:1.05rem;
+  cursor:pointer;
+}
+
+/* Message */
+.propose-message{
+  text-align:center;
+  padding:55px 20px;
+  background:rgba(255,255,255,.3);
+  animation:fadeUp 1.2s ease;
+}
+
+.propose-message h2{
+  font-family:'Great Vibes',cursive;
+  font-size:2.6rem;
+}
+
+.propose-message p{
+  margin-top:15px;
+  line-height:1.7;
+}
+
+/* Cards */
+.cards{
+  padding:50px 20px 70px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,.3);
+  backdrop-filter:blur(6px);
+  border-radius:22px;
+  padding:15px;
+  text-align:center;
+  transition:.4s;
+  animation:fadeUp 1.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+}
+
+.card img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  border-radius:16px;
+}
+
+.card p{
+  margin-top:12px;
+  font-size:.95rem;
+}
+
+/* Floating Hearts */
+.heart{
+  position:fixed;
+  bottom:-40px;
+  font-size:22px;
+  animation:rise linear infinite;
+  opacity:.7;
+}
+
+/* SweetAlert Custom */
+.swal2-popup{
+  background:linear-gradient(135deg,#fbc2eb,#a18cd1)!important;
+  border-radius:30px!important;
+  padding:45px 30px!important;
+}
+
+.swal2-title{
+  font-family:'Great Vibes',cursive!important;
+  font-size:2.8rem!important;
+  color:#240046!important;
+}
+
+.swal2-html-container{
+  font-size:1.05rem!important;
+  color:#240046!important;
+}
+
+.swal2-confirm{
+  background:#b5179e!important;
+  border-radius:30px!important;
+  padding:12px 36px!important;
+  font-size:1.05rem!important;
+}
+
+/* Big Ring inside Modal */
+.modal-ring{
+  font-size:120px;
+  margin:15px 0;
+  animation:pulseGlow 2s infinite;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:40px 20px;
+  background:rgba(255,255,255,.3);
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+}
+
+@keyframes pulseGlow{
+  0%,100%{
+    transform:scale(1);
+    filter:drop-shadow(0 0 10px rgba(255,255,255,.5));
+  }
+  50%{
+    transform:scale(1.15);
+    filter:drop-shadow(0 0 25px rgba(255,255,255,.9));
+  }
+}
+
+@keyframes rise{
+  to{transform:translateY(-110vh)}
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:2.6rem}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-wrapper">
+    <div class="logo">❤️ Valentine</div>
+
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Happy Propose Day 💍</h1>
+    <p>Sunday, February 8, 2026</p>
+
+    <div class="ring-big">💍</div>
+
+    <button class="btn" onclick="propose()">Will You Be Mine? 💖</button>
+  </div>
+</section>
+
+<section class="propose-message">
+  <h2>This question is from my heart 💌</h2>
+  <p>
+    I don’t promise perfection…<br>
+    but I promise honesty, love and forever ❤️
+  </p>
+
+  <p style="margin-top:20px;font-style:italic">
+    "ज़िंदगी भर का साथ मांग रहा हूँ,<br>
+    कोई पल का वादा नहीं 💍"
+  </p>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <img src="images/prpose.jpg">
+    <p>
+      You walked into my life quietly,<br>
+      but upgraded it to premium forever ❤️<br><br>
+
+      You didn’t knock loudly,<br>
+      but somehow became my favorite notification.<br>
+      Since then, my heart stays online only for you. 📱❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तू चुपचाप ज़िंदगी में आई थी,<br>
+        पर दिल की सीईओ बन बैठी भाई थी।<br>
+        पहले लाइफ सिंपल थी बड़ी,<br>
+        अब हर धड़कन कहती है — "बस तू ही तू पड़ी!" 😂❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/prpose1.jpg">
+    <p>
+      My heart didn’t ask for reasons,<br>
+      it simply chose you 💖<br><br>
+
+      No interview, no background check,<br>
+      my heart directly selected you permanently.<br>
+      No cancellation policy available. 💖😌<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        दिल ने बिना सोचे तुझे चुन लिया,<br>
+        कोई फार्म नहीं भरा, सीधे साइन कर लिया।<br>
+        अब चाहे तू बोले या ना बोले,<br>
+        दिल ने तुझे लाइफटाइम प्लान में जोड़ लिया। 😂❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/prpose3.jpg">
+    <p>
+      I don’t want a perfect life,<br>
+      I just want you by my side 💍<br><br>
+
+      Life doesn’t need filters or perfection,<br>
+      it just needs your hand in mine.<br>
+      That’s my definition of forever. 💕<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        परफेक्ट लाइफ की कोई ज़रूरत नहीं,<br>
+        बस तू पास हो, यही काफी सही।<br>
+        तेरे साथ सफर में ट्रैफिक भी मज़ा देता है,<br>
+        वरना अकेले तो रास्ता भी सज़ा देता है। 😂💕
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/prpose4.jpeg">
+    <p>
+      Every dream of mine has your name in it,<br>
+      written softly in my heart ❤️<br><br>
+
+      Even my future plans secretly include you.<br>
+      My heart already saved your name in every chapter. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        मेरे हर ख्वाब में तू ही आती है,<br>
+        नींद भी तेरे नाम से मुस्कुराती है।<br>
+        दिल की डायरी में तेरी एंट्री पक्की है,<br>
+        अब एडिट करने की कोई परमिशन नहीं बाकी है। 😂❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/prpose5.jpg">
+    <p>
+      So today, with all my heart,<br>
+      I ask you this one question 💍💖<br><br>
+
+      No drama, no big speech,<br>
+      just one simple wish from my heart —<br>
+      Will you stay with me forever? 💕<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        एक बात दिल से पूछनी है आज,<br>
+        बिना स्क्रिप्ट के, बिना किसी राज़।<br>
+        क्या तू मेरी लाइफ की फुल-टाइम पार्टनर बनेगी?<br>
+        या फिर मुझे रोज़ ऐसे ही तड़पाएगी? 😂💍❤️
+      </em>
+    </p>
+  </div>
+
+</section>
+
+
+
+<footer>
+  Made with ❤️ to ask the most important question<br>
+  Happy Propose Day 💍
+</footer>
+
+<!-- Music -->
+<audio id="loveMusic">
+  <source src="music/musicrose.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+let clickCount = 0;
+
+/* Floating Hearts */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+},500);
+
+/* Propose Button */
+function propose(){
+  clickCount++;
+
+  if(typeof gtag==="function"){
+    gtag('event','propose_button_click',{
+      event_category:'Propose Day',
+      click_count:clickCount
+    });
+  }
+
+  const music=document.getElementById("loveMusic");
+  music.volume=.6;
+  music.play();
+
+  Swal.fire({
+    title:'Will You Be Mine? 💍',
+    html:`
+      <div class="modal-ring">💍</div>
+      <p>
+        I choose you…<br>
+        today, tomorrow, and forever ❤️
+      </p>
+
+      <p style="margin-top:15px;font-style:italic">
+        "साथ उम्र भर का चाहिए,<br>
+        कोई पल का नहीं"
+      </p>
+    `,
+    confirmButtonText:'Yes 💖',
+    confirmButtonColor:'#b5179e',
+    background:'linear-gradient(135deg,#fbc2eb,#a18cd1)',
+    allowOutsideClick:false,
+    willClose:()=>music.pause()
+  });
+}
+</script>
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFW6Y4YSM4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFW6Y4YSM4');
+</script>
+
+<title>Hug Day 🤗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-main:#e0f7fa;
+  --bg-soft:#fff3e0;
+  --primary:#4db6ac;
+  --accent:#ffab91;
+  --text:#4a4a4a;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,var(--bg-main),var(--bg-soft));
+  color:var(--text);
+  overflow-x:hidden;
+  padding-top:60px;
+}
+
+/* 🤗 HUG DAY NAVBAR */
+.hug-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:60px;
+  background:linear-gradient(135deg,#4db6ac,#80cbc4);
+  z-index:1000;
+  box-shadow:0 8px 25px rgba(77,182,172,.4);
+}
+
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  height:100%;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.nav-logo{
+  font-weight:700;
+  color:white;
+  font-size:1.05rem;
+  letter-spacing:.5px;
+}
+
+/* LINKS */
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+.nav-links li a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.95rem;
+  position:relative;
+  padding:6px 0;
+}
+
+/* underline animation */
+.nav-links li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:white;
+  transition:.3s ease;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after{
+  width:100%;
+}
+
+/* MOBILE MENU BUTTON */
+.menu-btn{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* 📱 MOBILE VIEW */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#80cbc4,#4db6ac);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:20px 0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links li{
+    margin:12px 0;
+  }
+}
+
+
+/* Hero */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero-box{
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(14px);
+  padding:50px;
+  border-radius:40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.12);
+  animation:fadeIn 1.5s ease;
+}
+
+.hero h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3.8rem;
+}
+
+.hero p{
+  margin-top:10px;
+  font-size:1.1rem;
+}
+
+.hug-big{
+  font-size:120px;
+  margin:30px 0;
+  animation:hugPulse 2.8s infinite;
+}
+
+.btn{
+  margin-top:20px;
+  padding:15px 50px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border:none;
+  border-radius:50px;
+  color:white;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* Message */
+.message{
+  text-align:center;
+  padding:70px 20px;
+  background:rgba(255,255,255,.6);
+}
+
+.message h2{
+  font-family:'Great Vibes',cursive;
+  font-size:3rem;
+}
+
+.message p{
+  margin-top:20px;
+  line-height:2;
+  font-size:1.05rem;
+}
+
+/* Cards */
+.cards{
+  padding:60px 20px 80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:35px;
+}
+
+.card{
+  background:linear-gradient(145deg,#ffffff,#e0f2f1);
+  border-radius:35px;
+  padding:20px;
+  text-align:center;
+  transform-style:preserve-3d;
+  transition:.7s;
+  box-shadow:0 25px 60px rgba(0,0,0,.12);
+}
+
+.card:hover{
+  transform:translateY(-15px) scale(1.05);
+}
+
+.card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:25px;
+}
+
+.card p{
+  margin-top:18px;
+  font-size:1rem;
+}
+
+/* Floating hugs */
+.hug{
+  position:fixed;
+  bottom:-40px;
+  font-size:24px;
+  animation:rise linear infinite;
+  opacity:.7;
+}
+
+/* SweetAlert */
+.swal2-popup{
+  background:linear-gradient(135deg,#e0f7fa,#fff3e0)!important;
+  border-radius:40px!important;
+  padding:50px 30px!important;
+}
+
+.swal2-title{
+  font-family:'Great Vibes',cursive!important;
+  font-size:3rem!important;
+}
+
+.swal2-confirm{
+  background:var(--primary)!important;
+  color:white!important;
+  border-radius:40px!important;
+  padding:14px 45px!important;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:50px 20px;
+  background:rgba(255,255,255,.7);
+  font-size:1rem;
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes hugPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+}
+
+@keyframes rise{
+  to{transform:translateY(-110vh)}
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:2.8rem}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="hug-nav">
+  <div class="nav-container">
+    <div class="nav-logo">🤗 Hug Day</div>
+
+    <!-- Mobile menu button -->
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+      <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
+      <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
+      <li><a href="hug-day.html" class="active">🤗 Hug Day</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-box">
+    <h1>Happy Hug Day 🤗</h1>
+    <p>Thursday, February 12, 2026</p>
+
+    <div class="hug-big">🤗</div>
+
+    <button class="btn" onclick="hugLove()">Send a Hug 🤍</button>
+  </div>
+</section>
+
+<section class="message">
+  <h2>Some hugs heal everything 🤍</h2>
+
+  <p>
+    When words fail,<br>
+    hugs speak straight to the heart ❤️<br><br>
+
+    A hug doesn’t need reasons,<br>
+    it just needs love 💕
+  </p>
+
+  <p style="margin-top:28px;font-style:italic">
+    "कुछ एहसास लफ़्ज़ों से नहीं कहे जाते,<br>
+    वो बस बाहों में सिमट कर महसूस होते हैं 🤗<br>
+    जब तू गले लगती है,<br>
+    तो सारी दुनिया थोड़ी सी थम जाती है ❤️"
+  </p>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <img src="images/hug.jpeg">
+    <p>
+      Your hug is my safe place 🤍🤗<br><br>
+
+      When you hold me close,<br>
+      the world feels quieter,<br>
+      softer, and perfectly right. ❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरी बाहों में आते ही सुकून मिल जाता है,<br>
+        जैसे दिल को उसका पासवर्ड मिल जाता है। 😂🤍<br>
+        दुनिया की सारी टेंशन साइलेंट हो जाती है,<br>
+        बस तेरी झप्पी से लाइफ सेट हो जाती है। ❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/hug1.jpeg">
+    <p>
+      One hug, a thousand emotions 🤗❤️<br><br>
+
+      No long talks, no explanations,<br>
+      just one tight hug<br>
+      and everything makes sense again. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        एक गले लगना और सब दर्द गायब,<br>
+        दिल बोले — “बस ऐसे ही रहो, साहब!” 😂🤗<br>
+        शब्दों की जरूरत ही नहीं पड़ती,<br>
+        तेरी झप्पी खुद सब जवाब देती। ❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/hug2.jpeg">
+    <p>
+      Distance melts in your arms 🤍🤗<br><br>
+
+      No matter how far we are,<br>
+      one hug from you<br>
+      feels like no distance ever existed. 💕<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        फासले चाहे कितने भी लंबे हों,<br>
+        तेरी बाहों में आते ही छोटे हो जाते हों। 🤍<br>
+        GPS भी कन्फ्यूज हो जाए कभी,<br>
+        पर दिल सीधा तेरी झप्पी में ही पहुँचते हों। 😂
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/hug4.jpg">
+    <p>
+      I feel home when you hug me ❤️🤗<br><br>
+
+      Your arms feel like home,<br>
+      warm, safe, and forever mine.<br>
+      That’s where my heart belongs. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        घर का एहसास भी तेरी बाहों में है,<br>
+        दिल की हर सांस भी तेरी राहों में है। ❤️<br>
+        किराया नहीं लगता इस घर का,<br>
+        बस रोज़ एक झप्पी की चाहों में है। 😂🤗
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/hug5.jpg">
+    <p>
+      Forever starts with one hug 🤗❤️<br><br>
+
+      Maybe forever doesn’t need promises,<br>
+      maybe it just needs<br>
+      one warm hug that says “I’m here.” 💕<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        अगर ज़िंदगी भर कुछ माँगना हो,<br>
+        तो बस तेरा यूँ गले लगना माँगूँ। 🤗❤️<br>
+        EMI नहीं, डाउन पेमेंट नहीं,<br>
+        बस लाइफटाइम झप्पी का कॉन्ट्रैक्ट माँगूँ। 😂💕
+      </em>
+    </p>
+  </div>
+
+</section>
+
+
+<footer>
+  Made with 🤗 hugs & ❤️ love<br>
+  Happy Hug Day, my comfort
+</footer>
+
+<!-- Music -->
+<audio id="loveMusic">
+  <source src="music/musicrose.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+let hugCount = 0;
+
+/* Floating hugs */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="hug";
+  h.innerHTML="🤗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+},600);
+
+function hugLove(){
+  hugCount++;
+
+  if(typeof gtag==="function"){
+    gtag('event','hug_day_click',{
+      event_category:'Hug Day',
+      click_count:hugCount
+    });
+  }
+
+  const music=document.getElementById("loveMusic");
+  music.volume=.6;
+  music.play();
+
+  Swal.fire({
+    title:'A Warm Hug for You 🤗',
+    html:`
+      <div style="font-size:130px;animation:hugPulse 2s infinite">🤗</div>
+      <p>
+        This hug carries everything<br>
+        my words couldn’t say 🤍
+      </p>
+
+      <p style="margin-top:18px;font-style:italic">
+        "ये गले लगना मेरी मोहब्बत की ज़ुबान है"
+      </p>
+    `,
+    confirmButtonText:'Hug Me Back 🤍',
+    willClose:()=>music.pause()
+  });
+}
+</script>
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
+
+</body>
+</html>

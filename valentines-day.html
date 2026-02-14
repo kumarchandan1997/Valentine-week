@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Valentine’s Day ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --wine:#4a0d1f;
+  --rose:#b11226;
+  --blush:#f7c5cc;
+  --gold:#ffd166;
+  --soft:#fff5f7;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+  background:linear-gradient(135deg,var(--wine),#1b0208);
+  color:var(--soft);
+  overflow-x:hidden;
+  padding-top:70px;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(74,13,31,.95);
+  z-index:1000;
+}
+
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+}
+
+.logo{
+  font-weight:600;
+  color:var(--gold);
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:20px;
+}
+
+.nav-links li a{
+  color:white;
+  text-decoration:none;
+  font-size:.95rem;
+}
+
+.menu-btn{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero h1{
+  font-family:'Great Vibes',cursive;
+  font-size:4.8rem;
+  color:var(--gold);
+}
+
+.heart-big{
+  font-size:130px;
+  margin:30px 0;
+  animation:pulse 2.5s infinite;
+}
+
+.btn{
+  padding:18px 65px;
+  background:linear-gradient(135deg,var(--rose),var(--gold));
+  border:none;
+  border-radius:60px;
+  color:#2b020a;
+  font-size:1.2rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* TIMELINE */
+.timeline{
+  max-width:1000px;
+  margin:auto;
+  padding:90px 20px;
+}
+
+.timeline h2{
+  text-align:center;
+  font-family:'Great Vibes',cursive;
+  font-size:3.6rem;
+  color:var(--gold);
+  margin-bottom:50px;
+}
+
+.step{
+  background:rgba(255,255,255,.08);
+  padding:28px 30px;
+  border-radius:28px;
+  margin-bottom:25px;
+}
+
+/* CARDS */
+.cards{
+  max-width:1100px;
+  margin:auto;
+  padding:90px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:35px;
+}
+
+.card{
+  background:linear-gradient(145deg,#6a1228,#2b020a);
+  border-radius:35px;
+  padding:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  transition:.6s;
+}
+
+.card:hover{transform:translateY(-15px) scale(1.05);}
+
+.card img{
+  width:100%;
+  height:340px;
+  object-fit:cover;
+  border-radius:25px;
+}
+
+.card p{
+  margin-top:18px;
+  line-height:1.9;
+  font-size:1rem;
+}
+
+/* PROMISE */
+.promise{
+  text-align:center;
+  padding:100px 20px;
+}
+
+.promise h2{
+  font-family:'Great Vibes',cursive;
+  font-size:4rem;
+  color:var(--gold);
+}
+
+.promise p{
+  max-width:900px;
+  margin:30px auto;
+  line-height:2.1;
+  font-size:1.15rem;
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:fixed;
+  bottom:-40px;
+  font-size:24px;
+  animation:rise linear infinite;
+  opacity:.8;
+}
+
+/* SWEETALERT */
+.swal2-popup{
+  background:linear-gradient(135deg,#6a1228,#2b020a)!important;
+  border-radius:40px!important;
+}
+
+.blink-heart{
+  font-size:150px;
+  animation:blink 1s infinite;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px 20px;
+  background:#1b0208;
+}
+
+/* ANIMATIONS */
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.15)}
+}
+
+@keyframes rise{
+  to{transform:translateY(-120vh)}
+}
+
+@keyframes blink{
+  0%,100%{opacity:1}
+  50%{opacity:.3}
+}
+
+/* MOBILE NAV */
+@media(max-width:768px){
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#4a0d1f;
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:20px 0;
+  }
+  .nav-links.show{display:flex;}
+  .menu-btn{display:block;}
+  .hero h1{font-size:3.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">❤️ Valentine</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="menu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+      <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
+      <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
+      <li><a href="hug-day.html">🤗 Hug Day</a></li>
+      <li><a href="kiss-day.html">💋 Kiss Day</a></li>
+      <li><a href="valentines-day.html">❤️ Valentine</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Happy Valentine’s Day ❤️</h1>
+    <div class="heart-big">❤️</div>
+    <button class="btn" onclick="finalLove()">My Forever Question 💍</button>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <h2>Our Love Journey</h2>
+  <div class="step">🌹 Rose Day – प्यार की शुरुआत</div>
+  <div class="step">💍 Propose Day – दिल का फैसला</div>
+  <div class="step">🍫 Chocolate Day – मीठे पल</div>
+  <div class="step">🧸 Teddy Day – सुकून</div>
+  <div class="step">🤗 Hug Day – अपनापन</div>
+  <div class="step">💋 Kiss Day – एहसास</div>
+</section>
+
+<!-- CARDS -->
+<section class="cards">
+
+  <div class="card">
+    <img src="images/final.jpg">
+    <p>
+      You are my peace ❤️🌹<br><br>
+
+      On this Valentine’s Day,<br>
+      I just want to say —<br>
+      you are the calm my heart was searching for. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तू साथ हो तो हर दिन त्योहार लगे,<br>
+        तेरे बिना सब कुछ उधार लगे। ❤️<br>
+        वैलेंटाइन डे तो बस बहाना है,<br>
+        मेरा हर दिन तेरा दीवाना लगे। 😌🌹
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/final1.jpg">
+    <p>
+      Love found its meaning 💖🌹<br><br>
+
+      Before you, love was just a word.<br>
+      With you, it became my favorite reality.<br>
+      You are my sweetest forever. ❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरी एक मुस्कान ही काफी है,<br>
+        मेरी हर परेशानी साफ़ ही काफी है। 💕<br>
+        गिफ्ट्स क्या दूँ इस दिन तुझे,<br>
+        मेरा पूरा दिल ही लिफाफ़ा ही काफी है। 😂❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/final2.jpg">
+    <p>
+      Forever us ❤️💍<br><br>
+
+      Not just today, not just this moment,<br>
+      I choose you for every tomorrow.<br>
+      Forever sounds perfect with you. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        इश्क़ वो नहीं जो दुनिया को दिखे,<br>
+        इश्क़ वो है जो दिल में लिखे। ❤️<br>
+        तू और मैं बस इतना सा सपना,<br>
+        “Forever Us” — यही अपना अपना। 😌💍
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/final3.jpeg">
+    <p>
+      My heart chose you 💍❤️<br><br>
+
+      In a world full of choices,<br>
+      my heart picked you —<br>
+      without hesitation, without doubt. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        हर जन्म में तुझे ही चाहूँ,<br>
+        यही ऊपर वाले से चाहूँ। ❤️<br>
+        अगर फिर से लाइफ रीस्टार्ट हो जाए,<br>
+        तो “Skip Intro” करके तुझे ही पाऊँ। 😂💍
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/final4.jpeg">
+    <p>
+      My forever ❤️🌹<br><br>
+
+      Today is not just about roses,<br>
+      chocolates, or gifts.<br>
+      It’s about choosing you — always. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        कहने को बहुत कुछ है,<br>
+        पर दिल बस तेरा ही है। ❤️<br>
+        वैलेंटाइन डे हो या हर दिन का मौसम,<br>
+        मेरी दुनिया में तू ही तू है। 🌹💖
+      </em>
+    </p>
+  </div>
+
+</section>
+
+
+<!-- PROMISE -->
+<section class="promise">
+  <h2>My Promise 🤝</h2>
+  <p>
+    मैं वादा करता हूँ कि हर हाल में तेरा साथ निभाऊँगा।<br>
+    तेरी हँसी मेरी जीत होगी,<br>
+    और तेरे आँसू मेरी हार।
+  </p>
+</section>
+
+<footer>
+  Made with ❤️ just for you<br>
+  Forever Yours
+</footer>
+
+<!-- MUSIC -->
+<audio id="loveMusic">
+  <source src="music/musicrose.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+
+/* Floating hearts */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+},500);
+
+function finalLove(){
+  const music=document.getElementById("loveMusic");
+  music.volume=.6;
+  music.play();
+
+  Swal.fire({
+    title:'Forever Starts With You ❤️',
+    html:`
+      <div class="blink-heart">❤️</div>
+      <p style="margin-top:20px">
+        ये सिर्फ एक सवाल नहीं,<br>
+        ये मेरी पूरी ज़िंदगी की दुआ है।
+      </p>
+    `,
+    confirmButtonText:'Yes, Forever ❤️',
+    willClose:()=>music.pause()
+  });
+}
+</script>
+
+</body>
+</html>

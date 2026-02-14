@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFW6Y4YSM4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFW6Y4YSM4');
+</script>
+
+<title>Teddy Day 🧸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-main:#f8f3ef;
+  --bg-soft:#e6d8f5;
+  --primary:#a66cff;
+  --accent:#ffb703;
+  --text:#5b3a29;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,var(--bg-main),var(--bg-soft));
+  color:var(--text);
+  overflow-x:hidden;
+  padding-top:60px;
+}
+
+/* 🧸 TEDDY DAY NAVBAR */
+.teddy-nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:linear-gradient(135deg,#a66cff,#f7b2e6);
+  z-index:1000;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+.nav-wrapper{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-weight:700;
+  color:#fff0f8;
+  font-size:1.05rem;
+  letter-spacing:.5px;
+}
+
+/* links */
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+.nav-links li a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.95rem;
+  position:relative;
+  padding:6px 0;
+}
+
+/* soft underline */
+.nav-links li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:#ffe6ff;
+  transition:.35s ease;
+}
+
+.nav-links li a:hover::after{
+  width:100%;
+}
+
+/* hamburger */
+.menu-btn{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+  z-index:2000;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px){
+  .menu-btn{
+    display:block;   /* 👈 THIS makes it visible */
+  }
+
+  .nav-links{
+    position:absolute;
+    top:62px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#f7b2e6,#a66cff);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:20px 0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+
+  .nav-links li{
+    margin:10px 0;
+  }
+}
+
+/* Hero */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero-box{
+  background:rgba(255,255,255,.65);
+  backdrop-filter:blur(12px);
+  padding:45px;
+  border-radius:35px;
+  animation:fadeIn 1.5s ease;
+}
+
+.hero h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3.6rem;
+}
+
+.hero p{
+  margin-top:10px;
+  font-size:1.05rem;
+}
+
+.teddy-big{
+  font-size:110px;
+  margin:25px 0;
+  animation:bounce 2.5s infinite;
+}
+
+.btn{
+  margin-top:20px;
+  padding:14px 45px;
+  background:linear-gradient(135deg,var(--accent),#ffd166);
+  border:none;
+  border-radius:40px;
+  color:var(--text);
+  font-size:1.05rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* Message */
+.message{
+  text-align:center;
+  padding:65px 20px;
+  background:rgba(255,255,255,.55);
+}
+
+.message h2{
+  font-family:'Great Vibes',cursive;
+  font-size:2.8rem;
+}
+
+.message p{
+  margin-top:18px;
+  line-height:1.9;
+  font-size:1.02rem;
+}
+
+/* Cards */
+.cards{
+  padding:55px 20px 75px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:linear-gradient(145deg,#ffffff,#f1e6ff);
+  border-radius:30px;
+  padding:18px;
+  text-align:center;
+  transform-style:preserve-3d;
+  transition:.6s;
+}
+
+.card:hover{
+  transform:translateY(-12px) rotateX(6deg) rotateY(-6deg);
+}
+
+.card img{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+  border-radius:22px;
+}
+
+.card p{
+  margin-top:16px;
+  font-size:.95rem;
+  color:var(--text);
+}
+
+/* Floating Teddies */
+.teddy{
+  position:fixed;
+  bottom:-40px;
+  font-size:22px;
+  animation:rise linear infinite;
+  opacity:.7;
+}
+
+/* SweetAlert */
+.swal2-popup{
+  background:linear-gradient(135deg,var(--bg-main),var(--bg-soft))!important;
+  border-radius:35px!important;
+  padding:45px 30px!important;
+}
+
+.swal2-title{
+  font-family:'Great Vibes',cursive!important;
+  font-size:2.9rem!important;
+  color:var(--text)!important;
+}
+
+.swal2-html-container{
+  font-size:1.05rem!important;
+  line-height:1.8;
+  color:var(--text);
+}
+
+.swal2-confirm{
+  background:var(--primary)!important;
+  color:white!important;
+  border-radius:30px!important;
+  padding:12px 40px!important;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:45px 20px;
+  background:rgba(255,255,255,.6);
+  color:var(--text);
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+
+@keyframes rise{
+  to{transform:translateY(-110vh)}
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:2.6rem}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar teddy-nav">
+  <div class="nav-wrapper">
+    <div class="logo">🧸 Teddy Day</div>
+
+    <!-- MUST be inside nav-wrapper -->
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+      <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
+      <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<section class="hero">
+  <div class="hero-box">
+    <h1>Happy Teddy Day 🧸</h1>
+    <p>Tuesday, February 10, 2026</p>
+
+    <div class="teddy-big">🧸</div>
+
+    <button class="btn" onclick="teddyLove()">Send a Teddy Hug 🤍</button>
+  </div>
+</section>
+
+<section class="message">
+  <h2>This teddy carries my warmth 🤍</h2>
+
+  <p>
+    When life feels heavy,<br>
+    hugs make everything lighter ❤️<br><br>
+
+    This teddy is not a gift,<br>
+    it is my comfort wrapped for you 💕
+  </p>
+
+  <p style="margin-top:25px;font-style:italic">
+    "जब दुनिया थका दे और मन उदास हो जाए,<br>
+    तो इस टेडी को गले लगाकर सो जाना,<br>
+    समझ लेना उस वक़्त मेरी बाहें<br>
+    तुझे सबसे सुकून दे रही हैं 🧸❤️"
+  </p>
+</section>
+
+<section class="cards">
+  <div class="card">
+    <img src="images/teddy1.jpeg">
+    <p>
+      You are my calm 🤍<br><br>
+
+      You are my peace in chaos,<br>
+      the soft silence that heals my heart.<br>
+      With you, everything feels right,<br>
+      even the world slows down for a moment. 🤍<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरे होने से दिल को सुकून सा मिलता है,<br>
+        हर दर्द भी जैसे हँस कर चलता है।<br>
+        तू साथ हो तो दुनिया आसान लगती है,<br>
+        वरना हर ख़ामोशी भी चुभने लगती है। 🤍
+      </em>
+    </p>
+</div>
+
+
+ <div class="card">
+    <img src="images/teddy2.jpg">
+    <p>
+      Soft like a teddy,<br>
+      strong like my love 🧸❤️<br><br>
+
+      You look cute and innocent,<br>
+      but my love for you is permanently activated.<br>
+      Warning: Hugging you is addictive. 🧸❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तू टेडी जैसी मासूम लगती है,<br>
+        पर दिल पर पूरा कब्ज़ा करती है।<br>
+        गले लग जाऊँ तो टाइम रुक जाता है,<br>
+        और छोड़ दूँ तो दिल फिर से रुक जाता है। 🧸😂
+      </em>
+    </p>
+</div>
+<div class="card">
+    <img src="images/teddy4.jpeg">
+    <p>
+      Even in distance,<br>
+      my hug reaches you 🤍<br><br>
+
+      No matter how far you are,<br>
+      my heart has free home delivery service for hugs.<br>
+      No shipping charges, lifetime validity. 🤍📦<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        फासले चाहे जितने भी हो जाएँ,<br>
+        मेरा प्यार वाई-फाई की तरह पहुँच ही जाए।<br>
+        सिग्नल फुल हो या नेटवर्क स्लो,<br>
+        तेरा नाम आते ही दिल बोले — हेलो! 🤍😂
+      </em>
+    </p>
+</div>
+<div class="card">
+    <img src="images/teddy5.jpeg">
+    <p>
+      Keep this teddy close 🧸<br><br>
+
+      Whenever you miss me,<br>
+      hug this teddy tight.<br>
+      It has my invisible warranty of love. 🧸🤍<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        इस टेडी में दिल का बैकअप रखा है,<br>
+        इमरजेंसी में इसे ही पकड़ना सिखा है।<br>
+        जब मैं पास ना मिलूँ कहीं,<br>
+        इसे गले लगाकर कहना — "तू ही सही!" 🧸😂
+      </em>
+    </p>
+</div>
+<div class="card">
+    <img src="images/teddy23.jpeg">
+    <p>
+      Forever feels safe with you 🤍<br><br>
+
+      With you, forever doesn't feel scary.<br>
+      It feels like home.<br>
+      And I plan to stay permanently. 🤍<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        अगर ज़िंदगी कोई लॉन्ग ड्राइव है,<br>
+        तो तू मेरी फेवरेट राइड है।<br>
+        लाइफटाइम सब्सक्रिप्शन चाहिए तेरा,<br>
+        रिन्यूअल डेट कभी आए ही ना मेरा। 🤍😂
+      </em>
+    </p>
+</div>
+
+</section>
+
+<footer>
+  Made with 🧸 hugs & ❤️ love<br>
+  Happy Teddy Day, my safe place
+</footer>
+
+<!-- Music -->
+<audio id="loveMusic">
+  <source src="music/musicrose.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+let teddyCount = 0;
+
+/* Floating teddies */
+setInterval(()=>{
+  const t=document.createElement("div");
+  t.className="teddy";
+  t.innerHTML="🧸";
+  t.style.left=Math.random()*100+"vw";
+  t.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),8000);
+},600);
+
+function teddyLove(){
+  teddyCount++;
+
+  if(typeof gtag==="function"){
+    gtag('event','teddy_day_click',{
+      event_category:'Teddy Day',
+      click_count:teddyCount
+    });
+  }
+
+  const music=document.getElementById("loveMusic");
+  music.volume=.6;
+  music.play();
+
+  Swal.fire({
+    title:'A Teddy Hug for You 🧸',
+    html:`
+      <div style="font-size:120px;animation:bounce 2s infinite">🧸</div>
+      <p>
+        Whenever you feel low,<br>
+        remember someone loves you deeply 🤍
+      </p>
+
+      <p style="margin-top:15px;font-style:italic">
+        "ये टेडी मेरी बाहों का एहसास है,<br>
+        जब मैं पास ना होऊँ तब भी"
+      </p>
+    `,
+    confirmButtonText:'Hug Back 🤍',
+    willClose:()=>music.pause()
+  });
+}
+</script>
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Promise Day 🤝</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-main:#f4f1fa;
+  --bg-soft:#e9e3f5;
+  --primary:#7b6cd9;      /* lavender */
+  --accent:#c9b458;       /* soft gold */
+  --text:#3f3a56;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,var(--bg-main),var(--bg-soft));
+  color:var(--text);
+  overflow-x:hidden;
+  padding-top:60px;
+}
+
+/* 🤝 NAVBAR */
+.promise-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:60px;
+  background:linear-gradient(135deg,#7b6cd9,#9b8df0);
+  z-index:9999;
+  box-shadow:0 10px 30px rgba(123,108,217,.35);
+}
+
+.nav-wrapper{
+  max-width:1200px;
+  margin:auto;
+  height:100%;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-weight:700;
+  color:white;
+  font-size:1.05rem;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:26px;
+}
+
+.nav-links li a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.95rem;
+  position:relative;
+}
+
+.nav-links li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:var(--accent);
+  transition:.3s;
+}
+
+.nav-links li a:hover::after{
+  width:100%;
+}
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .menu-btn{display:block;}
+
+  .nav-links{
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#9b8df0,#7b6cd9);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:20px 0;
+  }
+
+  .nav-links.show{display:flex;}
+  .nav-links li{margin:10px 0;}
+}
+
+/* HERO */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero-box{
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(14px);
+  padding:55px;
+  border-radius:45px;
+  box-shadow:0 40px 90px rgba(123,108,217,.25);
+}
+
+.hero h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3.8rem;
+  color:#5a4fcf;
+}
+
+.promise-big{
+  font-size:95px;
+  margin:25px 0;
+  animation:pulse 2.6s infinite;
+}
+
+.btn{
+  margin-top:25px;
+  padding:16px 60px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border:none;
+  border-radius:50px;
+  color:white;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* MESSAGE */
+.message{
+  text-align:center;
+  padding:90px 20px;
+  background:rgba(255,255,255,.6);
+}
+
+.message h2{
+  font-family:'Great Vibes',cursive;
+  font-size:3.1rem;
+  color:#5a4fcf;
+}
+
+.message p{
+  max-width:950px;
+  margin:28px auto 0;
+  line-height:2.1;
+  font-size:1.05rem;
+}
+
+/* CARDS */
+.cards{
+  padding:75px 20px 100px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:38px;
+}
+
+.card{
+  background:linear-gradient(145deg,#ffffff,#efeaff);
+  border-radius:38px;
+  padding:24px;
+  box-shadow:0 35px 80px rgba(123,108,217,.25);
+  transition:.7s;
+  transform-style:preserve-3d;
+}
+
+.card:hover{
+  transform:translateY(-18px) rotateX(6deg) rotateY(-6deg);
+}
+
+.card img{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+  border-radius:28px;
+}
+
+.card p{
+  margin-top:18px;
+  line-height:1.95;
+  font-size:1rem;
+}
+
+/* FLOATING PROMISE ICON */
+.promise-float{
+  position:fixed;
+  bottom:-40px;
+  font-size:22px;
+  animation:rise linear infinite;
+  opacity:.7;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px 20px;
+  background:rgba(255,255,255,.7);
+  color:#5a4fcf;
+}
+
+/* ANIMATIONS */
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+}
+
+@keyframes rise{
+  to{transform:translateY(-110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="promise-nav">
+  <div class="nav-wrapper">
+    <div class="logo">🤝 Promise Day</div>
+    <button class="menu-btn" onclick="toggleNav()">☰</button>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+      <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
+      <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
+      <li><a href="promise-day.html">🤝 Promise Day</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-box">
+    <h1>Happy Promise Day 🤝</h1>
+    <p>Wednesday, February 11, 2026</p>
+    <div class="promise-big">🤝</div>
+    <button class="btn" onclick="promiseLove()">My Promise 🤍</button>
+  </div>
+</section>
+
+<section class="message">
+  <h2>Promises are silent bonds</h2>
+
+  <p>
+    A promise is not about saying “forever”,<br>
+    it is about choosing the same heart every day ❤️<br><br>
+
+    <strong>
+    "वादा वो नहीं जो लफ़्ज़ों में किया जाए,<br>
+    वादा वो है जो हर हाल में निभाया जाए।"
+    </strong>
+  </p>
+
+  <p style="margin-top:30px;font-style:italic">
+    "मैं तुझसे कोई बड़ा वादा नहीं करता,<br>
+    बस ये कहता हूँ कि हर मोड़ पर तेरा साथ बनूँगा।<br>
+    जब तू हँसेगा, मैं साथ हँसूँगा,<br>
+    जब तू रोएगा, मैं तुझे थाम लूँगा।"
+  </p>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <img src="images/promise.jpg">
+    <p>
+      <strong>I Promise My Presence 🤍</strong><br><br>
+
+      Not just in happy moments,<br>
+      but in every storm, every silence,<br>
+      and every small ordinary day. ❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        हर हाल में तेरा साथ निभाऊँगा,<br>
+        मुस्कान हो या आँसू, साथ रह जाऊँगा। 🤍<br>
+        मूड स्विंग्स हों या ड्रामा थोड़ा सा,<br>
+        “लॉगआउट” नहीं, लाइफटाइम लॉगइन रह जाऊँगा। 😂❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/promise1.jpg">
+    <p>
+      <strong>I Promise Honesty 💖</strong><br><br>
+
+      No lies, no hidden words,<br>
+      just a heart that speaks clearly<br>
+      and loves you truthfully. ❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरे भरोसे को कभी टूटने नहीं दूँगा,<br>
+        सच्चाई से रिश्ता छूटने नहीं दूँगा। 💕<br>
+        अगर गलती से भी नाराज़ कर दूँ,<br>
+        तो पहले माफ़ी माँगूँगा, फिर चॉकलेट दूँगा। 😂🍫
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/promise2.jpg">
+    <p>
+      <strong>I Promise Patience 🤍</strong><br><br>
+
+      I will listen, understand,<br>
+      and choose calm over ego.<br>
+      Because you matter more than winning. ❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        हर ग़लती में भी तुझे समझूँगा,<br>
+        तेरी खामोशी में भी तुझे पढ़ूँगा। 🤍<br>
+        बहस जीतने का शौक नहीं मुझे,<br>
+        तेरे दिल का केस हर बार मैं ही लड़ूँगा। 😂❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/promise3.jpg">
+    <p>
+      <strong>I Promise Protection 💕</strong><br><br>
+
+      Not to control you,<br>
+      but to protect your heart,<br>
+      respect your space,<br>
+      and guard your smile. ❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरे दिल को हमेशा सुरक्षित रखूँगा,<br>
+        हर डर से तुझे दूर रखूँगा। 🤍<br>
+        हीरो बनूँ या ना बनूँ दुनिया में,<br>
+        तेरे लिए सुपरहीरो जरूर बनूँगा। 😂🦸‍♂️❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/promise4.jpg">
+    <p>
+      <strong>I Promise Forever 💍❤️</strong><br><br>
+
+      Not just today, not just this year,<br>
+      but in every chapter of life,<br>
+      I will choose you again and again. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        हर जन्म तुझे ही चुनूँगा,<br>
+        ये वादा दिल से सुनूँगा। ❤️<br>
+        अगर ऊपर वाला फिर से ऑप्शन दे,<br>
+        तो “Skip All” दबाकर तुझे ही चुन लूँगा। 😂💍
+      </em>
+    </p>
+  </div>
+
+</section>
+
+
+<footer>
+  A promise made with love lasts forever 🤍
+</footer>
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+
+setInterval(()=>{
+  const p=document.createElement("div");
+  p.className="promise-float";
+  p.innerHTML="🤍";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),8000);
+},650);
+
+function promiseLove(){
+  Swal.fire({
+    title:'My Promise 🤝',
+    html:`
+      <div style="font-size:120px">🤝</div>
+      <p style="margin-top:20px">
+        I don’t promise perfection,<br>
+        I promise loyalty ❤️
+      </p>
+    `,
+    confirmButtonText:'I Trust You 🤍'
+  });
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>

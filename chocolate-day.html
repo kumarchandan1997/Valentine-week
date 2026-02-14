@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFW6Y4YSM4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFW6Y4YSM4');
+</script>
+
+<title>Chocolate Day 🍫</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --choco:#5a2d0c;
+  --dark:#3b1f0e;
+  --gold:#d4a373;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top,#7b3f00,#2b1700);
+  color:#fff;
+  overflow-x:hidden;
+  padding-top:60px;
+}
+
+/* CHOCOLATE NAVBAR */
+.chocolate-nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:linear-gradient(135deg,#5a2d0c,#3b1f0b);
+  z-index:1000;
+  box-shadow:0 8px 25px rgba(0,0,0,.4);
+}
+
+.nav-wrapper{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-weight:700;
+  color:#ffe6c7;
+  font-size:1.05rem;
+  letter-spacing:.5px;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+.nav-links li a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.95rem;
+  position:relative;
+  padding:6px 0;
+}
+
+/* underline animation */
+.nav-links li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:#ffe6c7;
+  transition:.35s ease;
+}
+
+.nav-links li a:hover::after{
+  width:100%;
+}
+
+/* mobile menu button */
+.menu-btn{
+  display:none;
+  font-size:26px;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* MOBILE VIEW */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:62px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#3b1f0b,#5a2d0c);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:20px 0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links li{
+    margin:10px 0;
+  }
+}
+
+
+/* Hero */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero-box{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(10px);
+  padding:40px;
+  border-radius:30px;
+  animation:fadeIn 1.5s ease;
+}
+
+.hero h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3.6rem;
+  color:#ffd6a5;
+}
+
+.hero p{
+  margin-top:10px;
+  font-size:1.05rem;
+}
+
+.choco-big{
+  font-size:90px;
+  margin:25px 0;
+  animation:float 3s infinite;
+}
+
+.btn{
+  margin-top:20px;
+  padding:14px 45px;
+  background:linear-gradient(135deg,#d4a373,#9c6644);
+  border:none;
+  border-radius:40px;
+  color:#3b1f0e;
+  font-size:1.05rem;
+  cursor:pointer;
+}
+
+/* Message */
+.message{
+  text-align:center;
+  padding:60px 20px;
+  background:rgba(255,255,255,.1);
+}
+
+.message h2{
+  font-family:'Great Vibes',cursive;
+  font-size:2.7rem;
+  color:#ffd6a5;
+}
+
+.message p{
+  margin-top:15px;
+  line-height:1.8;
+}
+
+/* Cards */
+.cards{
+  padding:50px 20px 70px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:linear-gradient(145deg,#6a3b1e,#3b1f0e);
+  border-radius:25px;
+  padding:18px;
+  text-align:center;
+  transform-style:preserve-3d;
+  transition:.6s;
+}
+
+.card:hover{
+  transform:rotateY(12deg) rotateX(8deg) scale(1.05);
+}
+
+.card img{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+.card p{
+  margin-top:14px;
+  font-size:.95rem;
+  color:#ffd6a5;
+}
+
+/* Floating Chocolates */
+.choco{
+  position:fixed;
+  bottom:-40px;
+  font-size:22px;
+  animation:rise linear infinite;
+  opacity:.7;
+}
+
+/* SweetAlert */
+.swal2-popup{
+  background:linear-gradient(135deg,#7b3f00,#2b1700)!important;
+  border-radius:30px!important;
+  padding:45px 30px!important;
+}
+
+.swal2-title{
+  font-family:'Great Vibes',cursive!important;
+  font-size:2.8rem!important;
+  color:#ffd6a5!important;
+}
+
+.swal2-html-container{
+  color:#fff!important;
+  font-size:1.05rem!important;
+}
+
+.swal2-confirm{
+  background:#d4a373!important;
+  color:#3b1f0e!important;
+  border-radius:30px!important;
+  padding:12px 38px!important;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:45px 20px;
+  background:rgba(0,0,0,.3);
+  color:#ffd6a5;
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+
+@keyframes rise{
+  to{transform:translateY(-110vh)}
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:2.6rem}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar chocolate-nav">
+  <div class="nav-wrapper">
+    <div class="logo">🍫 Chocolate Day</div>
+
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+      <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-box">
+    <h1>Happy Chocolate Day 🍫</h1>
+    <p>Monday, February 9, 2026</p>
+
+    <div class="choco-big">🍫</div>
+
+    <button class="btn" onclick="chocoLove()">Send Sweetness 💖</button>
+  </div>
+</section>
+
+<section class="message">
+  <h2>Just like chocolate…</h2>
+  <p>
+    Sweet on the outside,<br>
+    deep on the inside ❤️<br><br>
+
+    You melt my heart<br>
+    the same way chocolate melts slowly 💕
+  </p>
+
+  <p style="margin-top:20px;font-style:italic">
+    "जैसे चॉकलेट की मिठास दिल में उतर जाती है,<br>
+    वैसे ही तू मेरी हर साँस में बस जाती है 🍫"
+  </p>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <img src="images/chocolate3.jpg">
+    <p>
+      You are my favorite sweetness 💕🍫<br><br>
+
+      Sweeter than dark chocolate,<br>
+      softer than dairy milk,<br>
+      and 100% my favorite flavor. 😌❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरी मुस्कान चॉकलेट से भी ज़्यादा स्वीट है,<br>
+        देख लूँ तो दिल कहे — repeat! repeat! 😂🍫<br>
+        डायटिंग की कसम खा लूँ चाहे,<br>
+        पर तुझ पर cheat day रोज़ complete है। 💕
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/chocolate1.jpg">
+    <p>
+      Every moment with you tastes better 🍫💖<br><br>
+
+      Life was normal before you,<br>
+      now every second feels like dessert time.<br>
+      No sugar needed — you’re enough. 😌🍫<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरे साथ हर पल मीठा हो जाता है,<br>
+        जैसे दिल में चॉकलेट घुल जाता है।<br>
+        बिना तेरे सब फीका लगता है,<br>
+        तू आए तो लाइफ खुद हलवा बन जाता है। 😂🍫
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/chocolate2.jpeg">
+    <p>
+      Love melts, but never ends ❤️🍫<br><br>
+
+      Like chocolate in warmth,<br>
+      my heart melts for you.<br>
+      But this sweetness is forever. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        मोहब्बत चॉकलेट सी पिघलती जरूर है,<br>
+        पर खत्म होने से इंकार करती जरूर है।<br>
+        तेरे नाम की मिठास ऐसी चढ़ी है,<br>
+        कि दिल रोज़ extra sweet behave करता है। 😂❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/chocolate4.jpg">
+    <p>
+      You are my sweetest addiction 💖🍫<br><br>
+
+      I don’t need candy shops,<br>
+      because your smile already gives me sugar rush.<br>
+      Totally addicted to you. 😌❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरी आदत भी मिठास बन गई है,<br>
+        दिल की फेवरेट बात बन गई है।<br>
+        चॉकलेट छोड़ दूँ एक दिन में,<br>
+        पर तुझे छोड़ना तो impossible बात बन गई है। 😂🍫
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/chocolate5.jpg">
+    <p>
+      Forever tastes like you 🍫❤️<br><br>
+
+      If love had a flavor,<br>
+      it would taste exactly like you.<br>
+      Sweet, warm, and unforgettable. 💕<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        मेरी ज़िंदगी की असली मिठास तू है,<br>
+        बाकी सब तो बस टाइमपास तू है।<br>
+        चॉकलेट डे हो या हर दिन का सीन,<br>
+        मेरी लाइफ की permanent sweet queen तू है। 👑🍫❤️
+      </em>
+    </p>
+  </div>
+
+</section>
+
+
+<footer>
+  Made with 🍫 and ❤️ for the sweetest person in my life<br>
+  Happy Chocolate Day
+</footer>
+
+<!-- Music -->
+<audio id="loveMusic">
+  <source src="music/musicrose.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+let chocoCount = 0;
+
+/* Floating chocolates */
+setInterval(()=>{
+  const c=document.createElement("div");
+  c.className="choco";
+  c.innerHTML="🍫";
+  c.style.left=Math.random()*100+"vw";
+  c.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),8000);
+},600);
+
+function chocoLove(){
+  chocoCount++;
+
+  if(typeof gtag==="function"){
+    gtag('event','chocolate_day_click',{
+      event_category:'Chocolate Day',
+      click_count:chocoCount
+    });
+  }
+
+  const music=document.getElementById("loveMusic");
+  music.volume=.6;
+  music.play();
+
+  Swal.fire({
+    title:'For You 🍫',
+    html:`
+      <div style="font-size:110px;animation:float 2s infinite">🍫</div>
+      <p>
+        Just like chocolate,<br>
+        you make everything better ❤️
+      </p>
+
+      <p style="margin-top:15px;font-style:italic">
+        "तू मिले तो हर दिन चॉकलेट डे बन जाए"
+      </p>
+    `,
+    confirmButtonText:'Sweet 💖',
+    background:'linear-gradient(135deg,#7b3f00,#2b1700)',
+    willClose:()=>music.pause()
+  });
+}
+</script>
+
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFW6Y4YSM4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFW6Y4YSM4');
+</script>
+
+<title>Kiss Day 💋</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-main:#2b0a12;
+  --bg-soft:#5a0f1b;
+  --primary:#e63946;
+  --accent:#ff758f;
+  --text:#ffe6eb;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,var(--bg-main),var(--bg-soft));
+  color:var(--text);
+  overflow-x:hidden;
+  padding-top:60px;
+}
+
+/* 💖 NAVBAR */
+.val-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:60px;
+  background:linear-gradient(135deg,#e63946,#ff758f);
+  z-index:1000;
+  box-shadow:0 6px 25px rgba(230,57,70,.45);
+}
+
+.nav-wrap{
+  max-width:1200px;
+  margin:auto;
+  height:100%;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.nav-logo{
+  color:white;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+/* LINKS */
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:26px;
+}
+
+.nav-links li a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.95rem;
+  position:relative;
+  padding:6px 4px;
+}
+
+/* 💖 HEART UNDERLINE */
+.nav-links li a::after{
+  content:'💖';
+  position:absolute;
+  left:50%;
+  bottom:-18px;
+  transform:translateX(-50%) scale(0);
+  font-size:14px;
+  transition:.35s ease;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after{
+  transform:translateX(-50%) scale(1);
+}
+
+/* ☰ HAMBURGER */
+.menu-btn{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* 📱 MOBILE */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:linear-gradient(135deg,#ff758f,#e63946);
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:20px 0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links li{
+    margin:12px 0;
+  }
+}
+
+
+/* Hero */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero-box{
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(14px);
+  padding:55px;
+  border-radius:45px;
+  box-shadow:0 40px 100px rgba(0,0,0,.6);
+  animation:fadeIn 1.6s ease;
+}
+
+.hero h1{
+  font-family:'Great Vibes',cursive;
+  font-size:4rem;
+}
+
+.hero p{
+  margin-top:12px;
+  font-size:1.15rem;
+}
+
+.kiss-big{
+  font-size:130px;
+  margin:30px 0;
+  animation:kissPulse 2.6s infinite;
+  text-shadow:0 0 40px rgba(255,117,143,.6);
+}
+
+.btn{
+  margin-top:25px;
+  padding:16px 55px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border:none;
+  border-radius:55px;
+  color:white;
+  font-size:1.15rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* Message */
+.message{
+  text-align:center;
+  padding:80px 20px;
+  background:rgba(0,0,0,.35);
+}
+
+.message h2{
+  font-family:'Great Vibes',cursive;
+  font-size:3.2rem;
+  color:#ffd6dd;
+}
+
+.message p{
+  margin-top:25px;
+  line-height:2.1;
+  font-size:1.08rem;
+}
+
+/* Cards */
+.cards{
+  padding:65px 20px 85px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:35px;
+}
+
+.card{
+  background:linear-gradient(145deg,#5a0f1b,#2b0a12);
+  border-radius:40px;
+  padding:22px;
+  text-align:center;
+  transform-style:preserve-3d;
+  transition:.7s;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+
+.card:hover{
+  transform:translateY(-18px) scale(1.06);
+}
+
+.card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:28px;
+}
+
+.card p{
+  margin-top:20px;
+  font-size:1rem;
+}
+
+/* Floating kisses */
+.kiss{
+  position:fixed;
+  bottom:-40px;
+  font-size:26px;
+  animation:rise linear infinite;
+  opacity:.8;
+}
+
+/* SweetAlert */
+.swal2-popup{
+  background:linear-gradient(135deg,#2b0a12,#5a0f1b)!important;
+  border-radius:45px!important;
+  padding:55px 35px!important;
+}
+
+.swal2-title{
+  font-family:'Great Vibes',cursive!important;
+  font-size:3.2rem!important;
+  color:#ffd6dd!important;
+}
+
+.swal2-html-container{
+  font-size:1.1rem!important;
+  line-height:2;
+  color:#ffe6eb!important;
+}
+
+.swal2-confirm{
+  background:linear-gradient(135deg,#e63946,#ff758f)!important;
+  border-radius:45px!important;
+  padding:16px 55px!important;
+  color:white!important;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:55px 20px;
+  background:rgba(0,0,0,.4);
+  font-size:1.05rem;
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(50px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes kissPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.15)}
+}
+
+@keyframes rise{
+  to{transform:translateY(-110vh)}
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:2.9rem}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="val-nav">
+  <div class="nav-wrap">
+    <div class="nav-logo">💖 Valentine Days</div>
+
+    <!-- Hamburger -->
+    <div class="menu-btn" onclick="toggleNav()">☰</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="rose-day.html">🌹 Rose Day</a></li>
+      <li><a href="propose-day.html">💍 Propose Day</a></li>
+      <li><a href="chocolate-day.html">🍫 Chocolate Day</a></li>
+      <li><a href="teddy-day.html">🧸 Teddy Day</a></li>
+      <li><a href="promise-day.html">🤝 Promise Day</a></li>
+      <li><a href="hug-day.html">🤗 Hug Day</a></li>
+      <li><a href="kiss-day.html" class="active">💋 Kiss Day</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-box">
+    <h1>Happy Kiss Day 💋</h1>
+    <p>Friday, February 13, 2026</p>
+
+    <div class="kiss-big">💋</div>
+
+    <button class="btn" onclick="kissLove()">Send a Kiss 💖</button>
+  </div>
+</section>
+
+<section class="message">
+  <h2>A kiss that speaks love 💋</h2>
+
+  <p>
+    A kiss is not just a touch of lips,<br>
+    it’s a promise whispered without words ❤️<br><br>
+
+    It carries trust,<br>
+    desire, and forever 💕
+  </p>
+
+  <p style="margin-top:32px;font-style:italic">
+    "कुछ मुलाक़ातें लफ़्ज़ों की मोहताज नहीं होतीं,<br>
+    कुछ एहसास बस होंठों से उतर जाते हैं ❤️<br><br>
+    तेरी एक किस में वो ताक़त है,<br>
+    जो मेरी सारी थकान चुरा ले जाती है 💋"
+  </p>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <img src="images/kiss.jpg">
+    <p>
+      Your kiss feels like home 💖💋<br><br>
+
+      In one kiss, I find comfort,<br>
+      peace, and a thousand unspoken promises.<br>
+      It feels like I finally belong. ❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरी एक किस में ऐसा सुकून है,<br>
+        जैसे दिल को उसका जूनून मिल गया हो।<br>
+        दुनिया की टेंशन सब भूल जाता हूँ,<br>
+        बस तेरे होंठों का स्टेशन मिल गया हो। 😂💋
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/kiss1.jpeg">
+    <p>
+      Soft lips, strong love 💋❤️<br><br>
+
+      Your lips may be soft,<br>
+      but the love behind them is powerful enough<br>
+      to shake my whole world. 😌💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        होंठों की नर्मी कमाल करती है,<br>
+        दिल की धड़कन बवाल करती है।<br>
+        एक किस मिल जाए अगर तेरी,<br>
+        तो पूरी दुनिया कमाल लगती है। 😂💋
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/kiss2.jpeg">
+    <p>
+      One kiss, endless feelings ❤️💋<br><br>
+
+      A single kiss from you,<br>
+      and my heart forgets every worry.<br>
+      It just remembers your name. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        एक किस और दिल फिर से तेरा हो गया,<br>
+        बेचारा पहले भी तेरा था, बस कन्फर्म हो गया। 😂💋<br>
+        अब तो हर बहाना इसी का है,<br>
+        "थोड़ा और पास आ जाओ" — यही फरमान हो गया। ❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/kiss3.jpg">
+    <p>
+      Your kiss seals my heart 💋❤️<br><br>
+
+      No signature needed,<br>
+      your kiss is enough to seal every promise.<br>
+      My heart is officially yours. 💖<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        तेरी एक किस मेरी तक़दीर बन गई,<br>
+        दिल की पूरी फाइल क्लियर बन गई। 😂<br>
+        अब चाहे तू कुछ भी बोले,<br>
+        मोहब्बत permanent secure बन गई। 💋❤️
+      </em>
+    </p>
+  </div>
+
+  <div class="card">
+    <img src="images/kiss4.jpeg">
+    <p>
+      Forever begins with a kiss 💖💋<br><br>
+
+      Maybe forever doesn’t start with big promises.<br>
+      Maybe it begins with one soft kiss<br>
+      and two hearts agreeing silently. ❤️<br><br>
+
+      <em style="font-family: 'Brush Script MT', cursive; font-size: 18px;">
+        अगर इजाज़त हो तो एक बात कहूँ,<br>
+        तेरी किस में पूरी दुनिया रख लूँ। 💋<br>
+        शादी का कार्ड बाद में छपवा लेंगे,<br>
+        पहले Kiss Day पर दिल पक्का कर लूँ। 😂❤️
+      </em>
+    </p>
+  </div>
+
+</section>
+
+
+<footer>
+  Made with 💋 passion & ❤️ love<br>
+  Happy Kiss Day, my everything
+</footer>
+
+<!-- Music -->
+<audio id="loveMusic">
+  <source src="music/musicrose.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+let kissCount = 0;
+
+/* Floating kisses */
+setInterval(()=>{
+  const k=document.createElement("div");
+  k.className="kiss";
+  k.innerHTML="💋";
+  k.style.left=Math.random()*100+"vw";
+  k.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(k);
+  setTimeout(()=>k.remove(),8000);
+},600);
+
+function kissLove(){
+  kissCount++;
+
+  if(typeof gtag==="function"){
+    gtag('event','kiss_day_click',{
+      event_category:'Kiss Day',
+      click_count:kissCount
+    });
+  }
+
+  const music=document.getElementById("loveMusic");
+  music.volume=.6;
+  music.play();
+
+  Swal.fire({
+    title:'A Kiss Just for You 💋',
+    html:`
+      <div style="font-size:150px;animation:kissPulse 2s infinite">💋</div>
+      <p>
+        This kiss carries everything<br>
+        my heart wants to say ❤️
+      </p>
+
+      <p style="margin-top:18px;font-style:italic">
+        "एक किस में मेरी सारी दुनिया है"
+      </p>
+    `,
+    confirmButtonText:'Kiss Back 💖',
+    willClose:()=>music.pause()
+  });
+}
+</script>
+
+<script>
+function toggleNav(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
+
+</body>
+</html>
